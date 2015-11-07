@@ -1,0 +1,31 @@
+{
+  "name": "twitter-market-bot",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://dwasyluk@github.com/syscoin/twitter-market-bot.git"
+  },
+  "author": "Dan Wasyluk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syscoin/twitter-market-bot/issues"
+  },
+  "homepage": "https://github.com/syscoin/twitter-market-bot",
+  "dependencies": {
+    "node-twitterbot": "^0.2.2",
+    "syscoin": "^2.1.2"
+  },
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-ts": "^0.2.0",
+    "gulp-watch": "^4.3.5",
+    "tsc": "^1.20150623.0",
+    "tsd": "^0.6.5"
+  }
+}
