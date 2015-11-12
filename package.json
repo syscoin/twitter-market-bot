@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/syscoin/twitter-market-bot",
   "dependencies": {
-    "node-twitterbot": "^0.2.2",
-    "syscoin": "^2.1.2"
+    "syscoin": "^2.1.2",
+    "twitter": "^1.2.5"
   },
   "devDependencies": {
     "del": "^2.0.2",

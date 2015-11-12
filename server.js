@@ -1,6 +1,6 @@
 var fs = require('fs');
 var syscoin = require('syscoin');
-var twitter = require('node-twitterbot');
+var Twitter = require("Twitter");
 
 var sysClient = new syscoin.Client({
       host: "127.0.0.1",
@@ -10,12 +10,26 @@ var sysClient = new syscoin.Client({
       timeout: 5000
   });
 
+var twitterConfig;
+var twitterBot ;
+fs.readFile('twitterConfig.json', 'utf8', function (err, data) {
+  if (err) {
+    return console.log("An error occured loading twitter config: " + err);
+  }
+
+  twitterConfig = JSON.parse(data);
+  console.log(twitterConfig);
+  twitterBot = new Twitter(twitterConfig);
+  tweetOffer(null);
+});
+
+
 var guidHistory; //map of the GUIDs that have been tweeted
 var marketMonitorInterval;
 
 //APP startup
 initTweetHistory();
-startMarketMonitor();
+//startMarketMonitor();
 //---
 
 function initTweetHistory() {
@@ -55,7 +69,7 @@ function processMarketOffers(offers) {
   for(var i = 0; i < offers.length; i++) {
     console.log("offer:", offers[i]);
     if(guidHistory[offers[i].guid] != undefined) {
-      tweetOffer(offers[i]); //this offer isn't in history yet, so tweet it
+      //tweetOffer(offers[i]); //this offer isn't in history yet, so tweet it
     }  
   }
 }
@@ -65,6 +79,15 @@ function addOfferToHistory(offer) {
 }
 
 function tweetOffer(offer) {
+  console.log("Trying to tweet");
+  twitterBot.post('statuses/update', {status: 'I am a tweet'}, function(error, tweet, response){
+    if (!error) {
+      console.log(tweet);
+      console.log(response);
+    }
+    console.log(error);
+  });
+  
   //after tweet succcess, log the offer GUID
   //addOfferToHistory(offer);
 }
